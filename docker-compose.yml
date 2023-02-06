@@ -1,0 +1,24 @@
+version: "3"
+services:
+  gestcomp:
+    build: .
+    image: gestcomp
+    ports:
+      - "5000:5000"
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysqldbGestcomp:3306/pfeDataBase?createDatabaseIfNotExist=true&useSSL=false
+    networks:
+      - springmysql-net
+    depends_on:
+      - mysqldbGestcomp
+
+  mysqldbGestcomp:
+    image: mysql:5.7
+    networks:
+      - springmysql-net
+    environment:
+      - MYSQL_DATABASE=pfeDataBase
+      - MYSQL_ALLOW_EMPTY_PASSWORD="yes"
+
+networks:
+  springmysql-net: 

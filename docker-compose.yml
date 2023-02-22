@@ -2,6 +2,7 @@ version: "3"
 services:
   gestcomp:
     image: nadiaabdelmoula/gestioncompetenceback
+    container_name: gestioncompetenceback
     ports:
       - "5000:5000"
     environment:

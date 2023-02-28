@@ -14,7 +14,7 @@ services:
 
   mysqldbGestcomp:
     image: mysql:5.7
-    container_name: mysql5.7
+    container_name: mysqlcontainer
     networks:
       - springmysql-net
     environment:

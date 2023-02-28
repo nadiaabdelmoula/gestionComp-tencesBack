@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodeapp-deployment
+  name: gestioncompetence-deployment
   labels:
-    app: nodeapp
+    app: gestioncompetenceback
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nodeapp
+      app: gestioncompetenceback
   template:
     metadata:
       labels:
-        app: nodeapp 
+        app: gestioncompetenceback 
     spec:
       containers:
-      - name: nodeserver
+      - name: gestioncompetenceback
         image: nadiaabdelmoula/gestioncompetenceback
         ports:
         - containerPort: 3000
@@ -26,13 +26,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodeapp-service
+  name: gestioncompetence-service
 spec:
   selector:
-    app: nodeapp 
+    app: gestioncompetenceback 
   type: LoadBalancer
   ports:
   - protocol: TCP
     port: 5000
-    targetPort: 3000
-    nodePort: 31110
+    targetPort: 5000
+    nodePort: 5000

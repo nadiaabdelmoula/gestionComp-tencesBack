@@ -34,6 +34,17 @@ spec:
             
         - name: mysqlcontainer
           image: mysql:5.7
+          env:
+          - name: MYSQL_ALLOW_EMPTY_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: password
+          - name: MYSQL_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: db
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3306 # The port that the container is running on in the cluster

@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gcback
+spec:
+  selector:
+    matchLabels:
+      app: gcback
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: gcback
+    spec:
+      containers:
+        - name: gestioncompetenceback
+          image: nadiaabdelmoula/gestioncompetenceback
+          ports:
+            - containerPort: 5000
+          #env:   # Setting Environmental Variables
+           # - name: DB_HOST   # Setting Database host address
+            #  value: mysqldbGestcomp:3306
+           # - name: DB_NAME  # Setting Database name
+           #   value: pfeDataBase
+          #  - name: DB_USERNAME  # Setting Database username
+           #   value: root
+            #- name: DB_PASSWORD # Setting Database password
+             # value: root
+# This seperator --- below is MANDATORY!!!
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+spec:
+  ports:
+    - protocol: "TCP"
+      port: 8000    # Port inside the cluster
+      targetPort: 5000   # Port exposed to the outside
+  selector:
+    app: gcback
+  type: NodePort

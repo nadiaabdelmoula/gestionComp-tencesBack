@@ -11,7 +11,7 @@ server:
 spring:
   datasource:
     url: jdbc:mysql://mysqldbGestcomp:3306/pfeDataBase?createDatabaseIfNotExist=true&useSSL=false #change this to your database url
-    password:
+    password: root
     username: root #change this to your database password
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:

@@ -2,28 +2,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql
+  name: mysqldbGestcomp
   labels:
-    app: mysql
+    app: mysqldbGestcomp
     tier: database
 spec:
   selector: # mysql Pod Should contain same labels
     matchLabels:
-      app: mysql
+      app: mysqldbGestcomp
       tier: database
   strategy:
     type: Recreate
   template:
     metadata:
       labels: # Must match 'Service' and 'Deployment' selectors
-        app: mysql
+        app: mysqldbGestcomp
         tier: database
     spec:
       containers:
         - image: mysql:5.7 # image from docker-hub
           args:
             - "--ignore-db-dir=lost+found" # Workaround for https://github.com/docker-library/mysql/issues/186
-          name: mysql
+          name: mysqldbGestcomp
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom :
@@ -40,7 +40,7 @@ spec:
 
           ports:
             - containerPort: 3306
-              name: mysql
+              name: mysqlcontainer
           #volumeMounts:        # Mounting voulume obtained from Persistent Volume Claim
            # - name: mysql-persistent-storage
             #  mountPath: /var/lib/mysql #This is the path in the container on which the mounting will take place.
@@ -53,9 +53,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql  # DNS name
+  name: mysqldbGestcomp  # DNS name
   labels:
-    app: mysql
+    app: mysqldbGestcomp
     tier: database
 spec:
   ports:

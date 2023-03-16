@@ -13,8 +13,8 @@ spec:
         app: springboot-k8s-mysql
     spec:
       containers:
-        - name: springboot-crud-k8s
-          image: springboot-crud-k8s:1.0
+        - name: gestioncompetenceback
+          image: nadiaabdelmoula/gestioncompetenceback
           ports:
             - containerPort: 5000
           env:   # Setting Enviornmental Variables

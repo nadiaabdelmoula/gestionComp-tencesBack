@@ -1,33 +1,51 @@
-# Define a 'Service' To Expose mysql to Other Services
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysqldbgestcomp
+spec:
+  selector:
+    matchLabels:
+      app: mysqldbgestcomp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mysqldbgestcomp
+    spec:
+      containers:
+      - name: mysqldbgestcomp
+        image: mysql:5.7
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-root-credentials
+              key: password
+        - name: MYSQL_DATABASE
+          value: pfeDataBase
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql-credentials
+              key: username
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-credentials
+              key: password
+        ports:
+        - containerPort: 3306
+          name: mysqldbgestcomp
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql  # DNS name
-  labels:
-    app: mysql
-    tier: database
+  name: mysql-service
 spec:
-  ports:
-    - port: 3306
-      targetPort: 3306
-  selector:       # mysql Pod Should contain same labels
-    app: mysql
-    tier: database
-  clusterIP: None  # We Use DNS, Thus ClusterIP is not relevant
-
-
-
----
-apiVersion: v1 # Kubernetes API version
-kind: Service # Kubernetes resource kind we are creating
-metadata: # Metadata of the resource kind we are creating
-  name: springboot-crud-svc
-spec:
-  selector:
-    app: springboot-k8s-mysql
-  ports:
-    - protocol: "TCP"
-      port: 5000 # The port that the service is running on in the cluster
-      targetPort: 5000 # The port exposed by the service
-  type: NodePort # type of the service.
-

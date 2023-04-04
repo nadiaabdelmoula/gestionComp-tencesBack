@@ -36,16 +36,20 @@ spec:
         ports:
         - containerPort: 3306
           name: mysqldbgestcomp
-        volumeMounts:
-        - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql
-      volumes:
-      - name: mysql-persistent-storage
-        persistentVolumeClaim:
-          claimName: mysql-pv-claim
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql-service
+  name: mysqldbgestcomp  # DNS name
+  labels:
+    app: mysqldbgestcomp
+    tier: database
 spec:
+  ports:
+    - port: 3306
+      targetPort: 3306
+  selector:       # mysql Pod Should contain same labels
+    app: mysqldbgestcomp
+    tier: database
+  clusterIP: None  # We Use DNS, Thus ClusterIP is not relevant
+

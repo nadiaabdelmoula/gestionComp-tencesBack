@@ -1,18 +1,21 @@
 version: "3"
 services:
   gestcomp:
+    #build: .
+    #image: gestioncompetenceback
+    #container_name: gestcompcontainer
     image: nadiaabdelmoula/gestioncompetenceback
     container_name: gestioncompetenceback
     ports:
       - "5000:5000"
     environment:
-      - spring.datasource.url=jdbc:mysql://mysqldbgestcomp:3306/pfeDataBase?createDatabaseIfNotExist=true&useSSL=false
+      - spring.datasource.url=jdbc:mysql://mysqldbGestcomp:3306/pfeDataBase?createDatabaseIfNotExist=true&useSSL=false
     networks:
       - springmysql-net
     depends_on:
-      - mysqldbgestcomp
+      - mysqldbGestcomp
 
-  mysqldbgestcomp:
+  mysqldbGestcomp:
     image: mysql:5.7
     container_name: mysqlcontainer
     networks:

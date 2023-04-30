@@ -19,13 +19,15 @@ spec:
             - containerPort: 5000
           env:   # Setting Enviornmental Variables
             - name: DB_HOST   # Setting Database host address from configMap
-              value:
+              value: mysqldbgestcomp
             - name: DB_NAME  # Setting Database name from configMap
               value: pfeDataBase
             - name: DB_USERNAME  # Setting Database username from Secret
               value: root
             - name: DB_PASSWORD # Setting Database password from Secret
               value: root
+            - name: MYSQL_PORT
+              value: 3306
 
 ---
 

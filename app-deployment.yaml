@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: springboot-crud-deployment
+  namespace: appdep
 spec:
   selector:
     matchLabels:
@@ -53,7 +54,7 @@ spec:
               valueFrom :
                 configMapKeyRef :
                   name : db-config
-                  key :  url
+                  key :  application.yml
               #value: jdbc:mysql://mysqldbgestcomp:3306/pfeDataBase?createDatabaseIfNotExist=true&useSSL=false
 
 ---
@@ -62,6 +63,7 @@ apiVersion: v1 # Kubernetes API version
 kind: Service # Kubernetes resource kind we are creating
 metadata: # Metadata of the resource kind we are creating
   name: springboot-crud-svc
+  namespace: appdep
 spec:
   selector:
     app: springboot-k8s-mysql

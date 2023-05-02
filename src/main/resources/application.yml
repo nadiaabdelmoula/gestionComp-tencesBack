@@ -1,5 +1,9 @@
 jwt:
   secret: '[a-zA-Z0-9._]^+$Guidelines89797987forAlphabeticalArraNumeralsandOtherSymbo$'
+  
+endpoints:
+  env:
+    enabled: true
 
 
 server:
@@ -10,12 +14,14 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${DB_HOST:mysqldbgestcomp}:${MYSQL_PORT:3306}/${DB_NAME:pfeDataBase}?createDatabaseIfNotExist=true&useSSL=false
+    url: jdbc:mysql://${DB_HOST}:${MYSQL_PORT}/${DB_NAME}?createDatabaseIfNotExist=true&useSSL=false
+    #url: jdbc:mysql://${DB_HOST:mysqldbgestcomp}:${MYSQL_PORT:3306}/${DB_NAME:pfeDataBase}?createDatabaseIfNotExist=true&useSSL=false
     username: ${DB_PASSWORD:root} #change this to your database password
     password: ${DB_USERNAME:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       initialization-fail-timeout: 0
+   
   jpa:
     show-sql: true
     hibernate:
@@ -27,6 +33,12 @@ spring:
     throw-exception-if-no-handler-found: true
   resources:
     add-mappings: false
+
+
+
+  
+    	
+ 
     
     
    

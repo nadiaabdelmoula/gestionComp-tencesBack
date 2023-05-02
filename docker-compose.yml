@@ -9,13 +9,13 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - spring.datasource.url=jdbc:mysql://mysqldbGestcomp:3306/pfeDataBase?createDatabaseIfNotExist=true&useSSL=false
+      - spring.datasource.url=jdbc:mysql://mysqldbgestcomp:3306/pfeDataBase?createDatabaseIfNotExist=true&useSSL=false
     networks:
       - springmysql-net
     depends_on:
-      - mysqldbGestcomp
+      - mysqldbgestcomp
 
-  mysqldbGestcomp:
+  mysqldbgestcomp:
     image: mysql:5.7
     container_name: mysqlcontainer
     networks:

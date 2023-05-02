@@ -5,3 +5,5 @@ metadata:
 data:
   host : mysqldbgestcomp
   dbName: pfeDataBase
+  mysqlport: "3306"
+  url: jdbc:mysql://mysqldbgestcomp:3306/pfeDataBase?createDatabaseIfNotExist=true&useSSL=false

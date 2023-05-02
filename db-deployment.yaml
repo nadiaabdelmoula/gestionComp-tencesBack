@@ -25,9 +25,17 @@ spec:
           name: mysqldbgestcomp
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: root
+              valueFrom :
+                secretKeyRef :
+                  name : mysql-secrets
+                  key :  password
+              #value: root
             - name: MYSQL_DATABASE # Setting Database Name from a 'ConfigMap'
-              value: pfeDataBase
+              valueFrom :
+                configMapKeyRef :
+                  name : db-config
+                  key :  dbName
+              #value: pfeDataBase
           ports:
             - containerPort: 3306
               name: mysqldbgestcomp
@@ -48,3 +56,4 @@ spec:
     app: mysqldbgestcomp
     tier: database
   clusterIP: None  # We Use DNS, Thus ClusterIP is not relevant
+  #type: ClusterIP

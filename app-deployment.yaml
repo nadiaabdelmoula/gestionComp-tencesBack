@@ -54,7 +54,7 @@ spec:
               valueFrom :
                 configMapKeyRef :
                   name : db-config
-                  key :  application.yml
+                  key :  url
               #value: jdbc:mysql://mysqldbgestcomp:3306/pfeDataBase?createDatabaseIfNotExist=true&useSSL=false
 
 ---

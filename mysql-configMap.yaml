@@ -7,4 +7,4 @@ data:
   host : mysqldbgestcomp
   dbName: pfeDataBase
   mysqlport: "3306"
-  url: jdbc:mysql://${DB_HOST}:${MYSQL_PORT}/${DB_NAME}?createDatabaseIfNotExist=true&useSSL=false
+  #url: jdbc:mysql://${DB_HOST}:${MYSQL_PORT}/${DB_NAME}?createDatabaseIfNotExist=true&useSSL=false

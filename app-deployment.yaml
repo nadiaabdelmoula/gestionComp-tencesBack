@@ -20,42 +20,17 @@ spec:
             - containerPort: 5000
           env:   # Setting Enviornmental Variables
             - name: DB_HOST   # Setting Database host address from configMap
-              valueFrom :
-                configMapKeyRef :
-                  name : db-config
-                  key :  host
-              #value: mysqldbgestcomp
+              value: mysqldbgestcomp
             - name: DB_NAME  # Setting Database name from configMap
-              valueFrom :
-                configMapKeyRef :
-                  name : db-config
-                  key :  dbName
-              #value: pfeDataBase
+              value: pfeDataBase
             - name: DB_USERNAME  # Setting Database username from Secret
-              valueFrom :
-                secretKeyRef :
-                  name : mysql-secrets
-                  key :  username
-              #value: root
-            - name: DB_PASSWORD # Setting Database password from Secret
-              valueFrom :
-                secretKeyRef :
-                  name : mysql-secrets
-                  key :  password
-
-              #value: root
+              value: root
+            - name: DB_PASSWORD # Setting Database password from Secre
+              value: root
             - name: MYSQL_PORT
-              valueFrom :
-                configMapKeyRef :
-                  name : db-config
-                  key :  mysqlport
-              #value: "3306"
+              value: "3306"
             - name: SPRING_DATASOURCE_URL
-              valueFrom :
-                configMapKeyRef :
-                  name : db-config
-                  key :  url
-              #value: jdbc:mysql://mysqldbgestcomp:3306/pfeDataBase?createDatabaseIfNotExist=true&useSSL=false
+              value: jdbc:mysql://mysqldbgestcomp:3306/pfeDataBase?createDatabaseIfNotExist=true&useSSL=false&useJDBCCompliantTimezoneShift=true&serverTimezone=UTC
 
 ---
 

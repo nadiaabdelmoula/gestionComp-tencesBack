@@ -10,7 +10,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://${DB_HOST:mysqldbgestcomp}:${MYSQL_PORT:3306}/${DB_NAME:pfeDataBase}?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    url: jdbc:mysql://${DB_HOST:mysqldbgestcomp}:${MYSQL_PORT:3306}/${DB_NAME:pfeDataBase}?createDatabaseIfNotExist=true&useSSL=false&useJDBCCompliantTimezoneShift=true&serverTimezone=UTC
     password: ${DB_PASSWORD:root}
     username: ${DB_USERNAME:root} #change this to your database password
     driver-class-name: com.mysql.cj.jdbc.Driver

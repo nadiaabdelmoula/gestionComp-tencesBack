@@ -8,6 +8,9 @@ spec:
       image: nadiaabdelmoula/gestioncompetenceback
       ports:
         - containerPort: 5000
+      env:
+        - name: MYSQL_URL
+          value: jdbc:mysql://mysqldbgestcomp:3306/pfeDataBase?createDatabaseIfNotExist=true&useSSL=false&useJDBCCompliantTimezoneShift=true&serverTimezone=UTC
     - name: mysqlcontainer
       image: mysql:5.7
       env:
@@ -19,4 +22,6 @@ spec:
           value: root
         - name: MYSQL_PASSWORD
           value: root
+        - name: MYSQL_URL
+          value: jdbc:mysql://mysqldbgestcomp:3306/pfeDataBase?createDatabaseIfNotExist=true&useSSL=false&useJDBCCompliantTimezoneShift=true&serverTimezone=UTC
 

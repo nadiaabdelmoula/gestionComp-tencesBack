@@ -28,17 +28,17 @@ spec:
           - name: spring.datasource.username
             value: root
           - name: spring.datasource.password
-            value: root
+            value: cm9vdA==
           - name: DB_HOST   # Setting Database host address from configMap
             value: mysqldbgestcomp
           - name: DB_NAME  # Setting Database name from configMap
             value: pfeDataBase
-          - name: DB_USERNAME  # Setting Database username from Secret
-            value: root
-          - name: DB_PASSWORD # Setting Database password from Secret
-            value: root
-          - name: MYSQL_PORT
-            value: "3306"
+          #- name: DB_USERNAME  # Setting Database username from Secret
+           # value: root
+          #- name: DB_PASSWORD # Setting Database password from Secret
+         #   value: root
+         # - name: MYSQL_PORT
+            #value: "3306"
         ports:
         - containerPort: 5000     
 ---

@@ -11,6 +11,7 @@ public class SecurityConstant {
     public static final String FORBIDDEN_MESSAGE = "You need to log in to access this page";
     public static final String ACCESS_DENIED_MESSAGE = "You do not have permission to access this page";
     public static final String OPTIONS_HTTP_METHOD = "OPTIONS";
-    public static final String[] PUBLIC_URLS = { "/user/login", "/user/register", "/user/list", "/projet/list", "/user/image/**", "/user/resetpassword/**","/user/sendotp/**"};
+    public static final String[] PUBLIC_URLS = { "/domainecompetence/add", "/domainecompetence/listwithuser", "/domainecompetence/createRank", "/domainecompetence/createContribution", "/evalComite/add", "/evalComite/update", "/evalComite/getEvalComite", "/objectives/add", "/objectives/delete", "/objectives/updateDescription", "/objectives/updateEtat", "/objectives/list", "/projet/list", "/projet/add", "/projet/update", "/autoEval/add", "/autoEval/update", "/autoEval/getAutoEvalByUser", "/managerEval/add", "/managerEval/update", "/managerEval/getManagerEvalByUser","/trajectoire/add", "/trajectoire/update", "/trajectoire/getTrajectoire", "/user/add", "/user/update", "/user/updateRank", "/user/updatepassword", "/user/updateProfileImage", "/user/login", "/user/list", "/user/register", "/user/image/**", "/user/resetpassword/**","/user/sendotp/**"};
     //public static final String[] PUBLIC_URLS = { "**" };
 }
+

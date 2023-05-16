@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: springboot-k8s-mysql
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
